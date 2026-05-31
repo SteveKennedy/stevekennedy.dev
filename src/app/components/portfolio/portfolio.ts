@@ -8,6 +8,7 @@ interface Project {
   tags: string[];
   bgColor: string;
   accentColor: string;
+  url: string;
 }
 
 @Component({
@@ -214,7 +215,8 @@ interface Project {
                     <span class="tech-tag">{{ tag }}</span>
                   }
                 </div>
-                <a href="#" style="display:inline-flex; align-items:center; gap:6px; font-size:0.82rem;
+                 <a [href]="project.url" target="_blank" rel="noopener noreferrer"
+                   style="display:inline-flex; align-items:center; gap:6px; font-size:0.82rem;
                    font-weight:700; text-decoration:none; transition:all 0.25s ease; color:#1A1A1A;"
                    (mouseenter)="hovered[project.id + $index]=true"
                    (mouseleave)="hovered[project.id + $index]=false"
@@ -310,12 +312,12 @@ export class PortfolioComponent {
   private autoTimer: ReturnType<typeof setInterval> | null = null;
 
   projects: Project[] = [
-    { id: 'careerhub', name: 'CareerHub.AI',    description: 'AI-powered college & career readiness app with an AI coach, assessments, and planning tools across 800+ BLS occupations. Deployed to the App Store and Google Play.', tags: ['Ionic', 'Angular', 'Firebase', 'Azure', 'AI'],                  bgColor: '#0F172A', accentColor: '#F97316' },
-    { id: 'simplejoys', name: 'SimpleJoys',      description: 'A cross-platform app with 13+ mini-games and utilities. Fun is the feature.',                                                                                          tags: ['Ionic', 'Angular', '.NET', 'Firebase', 'Capacitor'],          bgColor: '#2D1B69', accentColor: '#A78BFA' },
-    { id: 'nvision',    name: 'nVision Ready',   description: 'AI-powered platform that turns employee ideas into actionable insights using a proprietary Readiness Score.',                                                           tags: ['Ionic', 'Angular', 'Azure', '.NET', 'AI', 'Firebase'],        bgColor: '#0D0D1F', accentColor: '#7C3AED' },
-    { id: 'rootedai',   name: 'Rooted.AI',       description: 'AI-powered ministry companion for rural and small-town pastors — sermon prep, congregation notes, and offline-first for low-connectivity areas.',                       tags: ['Ionic', 'Angular', 'Azure', '.NET', 'AI', 'Capacitor'],       bgColor: '#0F1F0F', accentColor: '#4ADE80' },
-    { id: 'toxon',      name: 'Toxon',           description: 'Archery event management and gaming platform — connecting venues with shooters through tournaments, live scoring, and mobile engagement.',                               tags: ['React Native', 'Node.js', 'AWS', 'React', 'Airtable'],        bgColor: '#0D0D0D', accentColor: '#EF4444' },
-    { id: 'jobletai',   name: 'Joblet.AI',       description: 'Hyperlocal gig marketplace — find or post small jobs nearby with fixed prices, trusted ratings, and real-time messaging.',                                              tags: ['Ionic', 'Angular', 'Azure', '.NET', 'Firebase'],              bgColor: '#1A1000', accentColor: '#F59E0B' },
+    { id: 'careerhub', name: 'CareerHub.AI',    description: 'AI-powered college & career readiness app with an AI coach, assessments, and planning tools across 800+ BLS occupations. Deployed to the App Store and Google Play.', tags: ['Ionic', 'Angular', 'Firebase', 'Azure', 'AI'],                  bgColor: '#0F172A', accentColor: '#F97316', url: 'https://www.ctehub.com' },
+    { id: 'simplejoys', name: 'SimpleJoys',      description: 'A cross-platform app with 13+ mini-games and utilities. Fun is the feature.',                                                                                          tags: ['Ionic', 'Angular', '.NET', 'Firebase', 'Capacitor'],          bgColor: '#2D1B69', accentColor: '#A78BFA', url: 'https://simplejoys.app' },
+    { id: 'nvision',    name: 'nVision Ready',   description: 'AI-powered platform that turns employee ideas into actionable insights using a proprietary Readiness Score.',                                                           tags: ['Ionic', 'Angular', 'Azure', '.NET', 'AI', 'Firebase'],        bgColor: '#0D0D1F', accentColor: '#7C3AED', url: 'https://nvision-website.azurestaticapps.net' },
+    { id: 'rootedai',   name: 'Rooted.AI',       description: 'AI-powered ministry companion for rural and small-town pastors — sermon prep, congregation notes, and offline-first for low-connectivity areas.',                       tags: ['Ionic', 'Angular', 'Azure', '.NET', 'AI', 'Capacitor'],       bgColor: '#0F1F0F', accentColor: '#4ADE80', url: 'https://rooted-ai-website.azurestaticapps.net' },
+    { id: 'toxon',      name: 'Toxon',           description: 'Archery event management and gaming platform — connecting venues with shooters through tournaments, live scoring, and mobile engagement.',                               tags: ['React Native', 'Node.js', 'AWS', 'React', 'Airtable'],        bgColor: '#0D0D0D', accentColor: '#EF4444', url: 'https://toxonapp.com' },
+    { id: 'jobletai',   name: 'Joblet.AI',       description: 'Hyperlocal gig marketplace — find or post small jobs nearby with fixed prices, trusted ratings, and real-time messaging.',                                              tags: ['Ionic', 'Angular', 'Azure', '.NET', 'Firebase'],              bgColor: '#1A1000', accentColor: '#F59E0B', url: 'https://jobletai.firebaseapp.com' },
   ];
 
   // 6 originals + first 3 cloned at end for seamless infinite loop
