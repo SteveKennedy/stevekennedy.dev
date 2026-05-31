@@ -231,7 +231,8 @@ interface Project {
         </div> <!-- end carousel-outer / overflow clip -->
 
         <!-- Arrows sit outside the clip so they're never cut off -->
-        <button (click)="prev()"
+        <button class="carousel-nav carousel-nav-prev"
+          (click)="prev()"
                 style="position:absolute; left:-22px; top:45%; transform:translateY(-50%); z-index:10;
                        width:44px; height:44px; border-radius:50%; border:2px solid rgba(0,0,0,0.1);
                        background:white; cursor:pointer; display:flex; align-items:center; justify-content:center;
@@ -240,7 +241,8 @@ interface Project {
                 [style.border-color]="arrowHover.prev ? '#7C3AED' : 'rgba(0,0,0,0.1)'"
                 [style.color]="arrowHover.prev ? '#7C3AED' : '#1A1A1A'">←</button>
 
-        <button (click)="next()"
+        <button class="carousel-nav carousel-nav-next"
+          (click)="next()"
                 style="position:absolute; right:-22px; top:45%; transform:translateY(-50%); z-index:10;
                        width:44px; height:44px; border-radius:50%; border:2px solid rgba(0,0,0,0.1);
                        background:white; cursor:pointer; display:flex; align-items:center; justify-content:center;
@@ -271,7 +273,26 @@ interface Project {
       .carousel-card { flex: 0 0 calc(50% - 0.75rem) !important; }
     }
     @media (max-width: 600px) {
-      .carousel-card { flex: 0 0 calc(100% - 3rem) !important; }
+      .carousel-card { flex: 0 0 calc(100% - 1.25rem) !important; }
+      .carousel-nav {
+        width: 36px !important;
+        height: 36px !important;
+        top: 42% !important;
+        font-size: 0.95rem !important;
+      }
+      .carousel-nav-prev { left: 0.35rem !important; }
+      .carousel-nav-next { right: 0.35rem !important; }
+    }
+    @media (max-width: 420px) {
+      .carousel-card { flex: 0 0 calc(100% - 0.75rem) !important; }
+      .carousel-nav {
+        width: 32px !important;
+        height: 32px !important;
+        top: 40% !important;
+        font-size: 0.85rem !important;
+      }
+      .carousel-nav-prev { left: 0.2rem !important; }
+      .carousel-nav-next { right: 0.2rem !important; }
     }
   `],
 })

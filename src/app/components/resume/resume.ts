@@ -32,25 +32,25 @@ interface Role {
                  style="position:relative; display:grid; grid-template-columns:1fr 40px 1fr; margin-bottom:2.5rem;">
 
               @if (role.side === 'right') {
-                <div style="grid-column:1;"></div>
-                <div style="grid-column:2; display:flex; justify-content:center; padding-top:1.3rem;">
+                <div class="resume-spacer" style="grid-column:1;"></div>
+                <div class="resume-node-col" style="grid-column:2; display:flex; justify-content:center; padding-top:1.3rem;">
                   <div class="timeline-node" [class.orange]="role.nodeColor === 'orange'"
                        style="position:static; transform:none; margin:0;"></div>
                 </div>
-                <div style="grid-column:3; padding-left:2rem;">
+                <div class="resume-content resume-content-right" style="grid-column:3; padding-left:2rem;">
                   <ng-container [ngTemplateOutlet]="card" [ngTemplateOutletContext]="{ role: role }"></ng-container>
                 </div>
               }
 
               @if (role.side === 'left') {
-                <div style="grid-column:1; padding-right:2rem; text-align:right;">
+                <div class="resume-content resume-content-left" style="grid-column:1; padding-right:2rem; text-align:right;">
                   <ng-container [ngTemplateOutlet]="card" [ngTemplateOutletContext]="{ role: role }"></ng-container>
                 </div>
-                <div style="grid-column:2; display:flex; justify-content:center; padding-top:1.3rem;">
+                <div class="resume-node-col" style="grid-column:2; display:flex; justify-content:center; padding-top:1.3rem;">
                   <div class="timeline-node" [class.orange]="role.nodeColor === 'orange'"
                        style="position:static; transform:none; margin:0;"></div>
                 </div>
-                <div style="grid-column:3;"></div>
+                <div class="resume-spacer" style="grid-column:3;"></div>
               }
 
             </div>
@@ -99,7 +99,7 @@ interface Role {
     </section>
 
     <ng-template #card let-role="role">
-      <div style="background:white; border-radius:14px; padding:1.25rem 1.5rem; text-align:left;
+      <div class="resume-card" style="background:white; border-radius:14px; padding:1.25rem 1.5rem; text-align:left;
                   border:1px solid rgba(0,0,0,0.055); box-shadow:0 2px 16px rgba(0,0,0,0.04);">
         <div style="font-family:'Bricolage Grotesque',sans-serif; font-size:1rem; font-weight:800;
                     letter-spacing:-0.02em; color:#1A1A1A; margin-bottom:4px;">{{ role.title }}</div>
@@ -116,7 +116,20 @@ interface Role {
   `,
   styles: [`
     @media (max-width: 640px) {
-      .resume-item { grid-template-columns: 24px 1fr !important; }
+      .resume-item { grid-template-columns: 24px minmax(0, 1fr) !important; }
+      .resume-node-col {
+        grid-column: 1 !important;
+        justify-content: flex-start !important;
+        padding-top: 1.2rem !important;
+      }
+      .resume-content {
+        grid-column: 2 !important;
+        padding-left: 1rem !important;
+        padding-right: 0 !important;
+        text-align: left !important;
+      }
+      .resume-spacer { display: none !important; }
+      .resume-card { width: 100%; }
     }
   `],
 })
